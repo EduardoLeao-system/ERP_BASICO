@@ -1,0 +1,6 @@
+cat > .gitignore << 'EOF'
+# Ambiente virtual Python
+.venv/
+venv/
+env/
+ENV/
