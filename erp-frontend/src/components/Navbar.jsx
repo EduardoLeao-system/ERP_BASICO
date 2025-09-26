@@ -1,58 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
-import './Navbar.css';
+import React from 'react';
 
-function Navbar() {
-  const location = useLocation();
-
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        ERP Mini
-      </div>
-      <ul className="navbar-links">
-        <li>
-          <Link
-            to="/"
-            className={`navbar-link${location.pathname === '/' ? ' active' : ''}`}
-          >
-            Início
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/products"
-            className={`navbar-link${location.pathname === '/products' ? ' active' : ''}`}
-          >
-            Produtos
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/customers"
-            className={`navbar-link${location.pathname === '/customers' ? ' active' : ''}`}
-          >
-            Clientes
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/sales/new"
-            className={`navbar-link${location.pathname === '/sales/new' ? ' active' : ''}`}
-          >
-            Nova Venda
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/report"
-            className={`navbar-link${location.pathname === '/report' ? ' active' : ''}`}
-          >
-            Relatório
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-}
+const Navbar = ({ setPage }) => (
+  <nav className="navbar">
+    <div className="flex-1">
+      <h1 className="text-3xl font-bold glass-text">
+        <span className="text-violet-400">ERP</span> Mini
+      </h1>
+    </div>
+    <div className="flex-none flex items-center space-x-2 sm:space-x-4">
+      <a href="#" onClick={() => setPage('customers')}>Clientes</a>
+      <a href="#" onClick={() => setPage('products')}>Produtos</a>
+      <a href="#" onClick={() => setPage('newSale')}>Nova Venda</a>
+      <a href="#" onClick={() => setPage('report')}>Relatório</a>
+    </div>
+  </nav>
+);
 
 export default Navbar;

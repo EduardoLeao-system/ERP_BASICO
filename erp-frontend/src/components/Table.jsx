@@ -1,32 +1,30 @@
-function Table({ headers, rows }) {
-  return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border border-gray-300">
-        <thead className="bg-gray-100">
-          <tr>
-            {headers.map((header, idx) => (
-              <th key={idx} className="px-4 py-2 text-left border-b">{header}</th>
+import React from 'react';
+
+const Table = ({ headers, rows }) => (
+  <div className="overflow-x-auto rounded-3xl backdrop-blur-lg bg-gray-800/50 shadow-lg">
+    <table className="min-w-full text-white/90">
+      <thead>
+        <tr>
+          {headers.map((header, index) => (
+            <th key={index} className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white/80 glass-header">
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex} className="border-b border-gray-700 hover:bg-gray-800/60 transition-colors duration-300">
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex} className="px-6 py-4 whitespace-nowrap text-sm">
+                {cell}
+              </td>
             ))}
           </tr>
-        </thead>
-        <tbody>
-          {rows.length > 0 ? (
-            rows.map((row, idx) => (
-              <tr key={idx} className="hover:bg-gray-50">
-                {row.map((cell, i) => (
-                  <td key={i} className="px-4 py-2 border-b">{cell}</td>
-                ))}
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={headers.length} className="text-center py-4">Nenhum dado</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
-}
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 
 export default Table;
